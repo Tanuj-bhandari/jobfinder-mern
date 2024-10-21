@@ -1,0 +1,13 @@
+/* Import slick-carousel CSS */
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+
+/* Other CSS rules */
+html, body {
+    overflow-y: scroll; /* Ensures content can still be scrolled */
+    scrollbar-width: none; /* For Firefox */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+}

@@ -1,0 +1,38 @@
+.about-us-container {
+    position: relative;
+    width: 100%;
+    min-height: 200vh; /* Enough height to ensure scrolling */
+    overflow: hidden;
+  }
+  
+  #backgroundCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #f0f4f8; /* Canvas background color */
+    z-index: -1;
+  }
+  
+  .content-wrapper {
+    padding: 5rem 2rem;
+  }
+  
+  .about-section {
+    min-height: 100vh; /* Full height for each section to force scrolling */
+    margin: 3rem 0;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(100px); /* Offscreen below */
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    color: #2b2b2b;
+  }
+  
+  .about-section p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  

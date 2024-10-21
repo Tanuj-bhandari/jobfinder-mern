@@ -1,0 +1,109 @@
+const [location, setLocation] = useState('');
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+  
+          console.log('Latitude:', latitude);
+          console.log('Longitude:', longitude);
+  
+          // Call the reverse geocoding API with latitude and longitude
+          const locationData = await getCityAndState(latitude, longitude);
+  
+          // Log the location data in the console
+          console.log('Location Data:', locationData);
+  
+          // Update state with the fetched location
+          setLocation(locationData);
+        },
+        (error) => {
+          console.error('Error fetching location:', error);
+        },
+        {
+          enableHighAccuracy: true, // Request higher accuracy
+          timeout: 5000, // Timeout after 5 seconds
+          maximumAge: 0,  // Don't use cached location
+        }
+      );
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  };
+  
+
+  const getCityAndState = async (latitude, longitude) => {
+    const apiKey = 'ea30fc8ed86d4466a6fd24e7cc60f037'; // Replace with your OpenCage API key
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.results && data.results.length > 0) {
+        const components = data.results[0].components;
+
+        // Log the entire components object to inspect the data structure
+        console.log('Components:', components);
+
+        // Check for city, town, village, or other location types
+        const city = components.city || components.town || components.village || components.county;
+        const state = components.state;
+
+        return `${city}, ${state}`;
+      } else {
+        return 'Location not found';
+      }
+    } catch (error) {
+      console.error('Error fetching location from API:', error);
+      return 'Error fetching location';
+    }
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
+
+
+
+
+  const [location, setLocation] = useState({ state: "", city: "" });
+  const getLocationAndSendToBackend = async (userId) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          // Use OpenCage API to convert lat/lng to city and state
+          const apiKey = 'ea30fc8ed86d4466a6fd24e7cc60f037'; // Replace with your OpenCage API key
+          const locationRes = await axios.get(
+            `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
+          );
+          const { city, state } = locationRes.data.results[0].components;
+          setLocation({
+            city: city || "",
+            state: state || "",
+          });
+  
+          // Send city and state to the backend via POST request
+          await axios.post(
+            `http://localhost:8000/api/v1/user/update-location/${userId}`,
+            { city: city || "", state: state || "" }, // Params sent in the body
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+              withCredentials: true,
+            }
+          );
+          toast.success("Location updated successfully!");
+        } catch (error) {
+          console.error("Failed to fetch location or send it to the backend", error);
+          toast.error("Failed to update location");
+        }
+      });
+    } else {
+      toast.error("Geolocation is not supported by this browser");
+    }
+  };
+  

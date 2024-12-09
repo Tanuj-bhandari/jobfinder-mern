@@ -13,7 +13,7 @@ const SavedJobs = () => {
     useEffect(() => {
         const getSavedJobs = async () => {
             try {
-                const res = await axios.get(`${USER_API_END_POINT}/getSavedJobs`, { withCredentials: true });
+                const res = await axios.get(`${USER_API_END_POINT || 'https://jobfinder-j37x.onrender.com/api/v1/user'}/getSavedJobs`, { withCredentials: true });
                 if (res.data.success) {
                     setSavedJobs(res.data.savedJobs);
                 }

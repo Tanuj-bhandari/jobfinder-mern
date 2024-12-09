@@ -46,7 +46,7 @@ function Signup() {
     try {
       dispatch(setLoading(true));
       const res = await axios.post(
-        `http://localhost:8000/api/v1/user/register`,
+        `https://jobfinder-j37x.onrender.com/api/v1/user/register`,
         formData,
         {
           headers: {

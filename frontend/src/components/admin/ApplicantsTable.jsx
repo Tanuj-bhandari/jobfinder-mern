@@ -18,7 +18,7 @@ const ApplicantsTable = () => {
     const statusHandler = async (status, id, reason) => {
         try {
             axios.defaults.withCredentials = true;
-            const res = await axios.post(`${APPLICATION_API_END_POINT}/status/${id}/update`, { status, reason });
+            const res = await axios.post(`${APPLICATION_API_END_POINT || 'https://jobfinder-j37x.onrender.com/api/v1/application'}/status/${id}/update`, { status, reason });
             if (res.data.success) {
                 toast.success(res.data.message);
             }

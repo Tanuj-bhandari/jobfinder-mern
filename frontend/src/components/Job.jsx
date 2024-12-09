@@ -20,7 +20,7 @@ const Job = ({job}) => {
     }
     const saveJob = async (jobId) => {
         try {
-          const res = await axios.get(`${USER_API_END_POINT}/savejob/${jobId}`,{ withCredentials: true });
+          const res = await axios.get(`${USER_API_END_POINT || 'https://jobfinder-j37x.onrender.com/api/v1/user'}/savejob/${jobId}`,{ withCredentials: true });
           if (res.data.success) {
             toast.success(res.data.message);
             

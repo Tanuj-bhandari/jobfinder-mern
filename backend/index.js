@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:process.env.origin || 'https://jobfinder-j37x.onrender.com/',
+    origin:process.env.origin || 'https://jobfinder-j37x.onrender.com',
     credentials:true
 }
 

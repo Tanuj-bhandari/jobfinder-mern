@@ -8,7 +8,7 @@ import { Label } from './ui/label';
 import AppliedJobTable from './AppliedJobTable';
 import Footer from './Footer';
 import { useSelector } from 'react-redux';
-import UpdateProfileDialog from './updateProfileDialog';
+import UpdateProfileDialog from './UpdateProfileDialog';
 import useGetAppliedJobs from '@/hooks/useGetAppliedJobs';
 
 const isResume = true;

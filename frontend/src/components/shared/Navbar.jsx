@@ -28,7 +28,7 @@ function Navbar() {
 
   const logoutHandler = async () => {
     try {
-      const res = await axios.get(`${USER_API_END_POINT}/logout`, { withCredentials: true });
+      const res = await axios.get(`${USER_API_END_POINT || 'https://jobfinder-j37x.onrender.com/api/v1/user'}/logout`, { withCredentials: true });
       if (res.data.success) {
         dispatch(setUser(null));
         navigate("/");

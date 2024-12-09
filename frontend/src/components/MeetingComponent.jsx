@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
-import microsoft from '../assets/microsoft.jpeg';
-import anotherImage from '../assets/googleOffice.jpeg'; // Add more images as needed
+import microsoft from '../assets/Microsoft.jpeg';
+import anotherImage from '../assets/GoogleOffice.jpeg'; // Add more images as needed
 import { useSelector } from 'react-redux';
 
 const MeetingComponent = () => {

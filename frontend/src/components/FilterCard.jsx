@@ -23,41 +23,45 @@ const filterData = [
 const FilterCard = () => {
     const [selectedValue, setSelectedValue] = useState('');
     const dispatch = useDispatch();
-    
+
     const changeHandler = (value) => {
         setSelectedValue(value);
-    }
-    
+    };
+
     useEffect(() => {
         dispatch(setSearchedQuery(selectedValue));
     }, [selectedValue]);
+
     const { light } = useSelector((store) => store.mode);
+
     return (
-        <div className={`w-full ${light?'bg-white ':'bg-zinc-800 text-white'} p-3 rounded-md h-[470px] overflow-y-auto custom-scrollbar`}>
+        <div
+            className={`w-full ${
+                light ? 'bg-white' : 'bg-zinc-800 text-white'
+            } p-3 rounded-md h-[470px] overflow-y-auto custom-scrollbar 
+            lg:w-1/3 lg:fixed lg:right-0 lg:top-0 lg:mt-5
+            sm:mt-0 sm:static sm:w-full`}
+        >
             <h1 className='font-bold text-lg'>Filter Jobs</h1>
             <hr className='mt-3' />
             <RadioGroup value={selectedValue} onValueChange={changeHandler}>
-                {
-                    filterData.map((data, index) => (
-                        <div key={index}>
-                            <h1 className='font-bold text-lg'>{data.filterType}</h1>
-                            {
-                                data.array.map((item, idx) => {
-                                    const itemId = `id${index}-${idx}`;
-                                    return (
-                                        <div key={itemId} className='flex items-center space-x-2 my-2'>
-                                            <RadioGroupItem value={item} id={itemId} />
-                                            <Label htmlFor={itemId}>{item}</Label>
-                                        </div>
-                                    );
-                                })
-                            }
-                        </div>
-                    ))
-                }
+                {filterData.map((data, index) => (
+                    <div key={index}>
+                        <h1 className='font-bold text-lg'>{data.filterType}</h1>
+                        {data.array.map((item, idx) => {
+                            const itemId = `id${index}-${idx}`;
+                            return (
+                                <div key={itemId} className='flex items-center space-x-2 my-2'>
+                                    <RadioGroupItem value={item} id={itemId} />
+                                    <Label htmlFor={itemId}>{item}</Label>
+                                </div>
+                            );
+                        })}
+                    </div>
+                ))}
             </RadioGroup>
         </div>
     );
-}
+};
 
 export default FilterCard;

@@ -17,6 +17,7 @@ const AdminJobsTable = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{ 
+        console.log('called');
         const filteredJobs = allAdminJobs.filter((job)=>{
             if(!searchJobByText){
                 return true;
@@ -28,7 +29,7 @@ const AdminJobsTable = () => {
     },[allAdminJobs,searchJobByText])
     const handleDeleteCompany = async (id) => {
         try {
-            const res = await axios.delete(`${JOB_API_END_POINT || 'https://jobfinder-j37x.onrender.com/api/v1/job'}/delete/${id}`, { withCredentials: true });
+            const res = await axios.delete(`${JOB_API_END_POINT}/delete/${id}`, { withCredentials: true });
             if (res.data?.success) {
                 toast.success(res.data.message);
             }

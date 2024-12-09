@@ -12,6 +12,7 @@ import { setLoading } from "@/redux/authSlice";
 import { setUser } from "@/redux/authSlice"; 
 import { Loader2 } from "lucide-react";
 import Footer from "../Footer";
+import { USER_API_END_POINT } from "@/utils/constant";
 
 function Login() {
   const [input, setInput] = useState({
@@ -37,7 +38,7 @@ function Login() {
     try {
       dispatch(setLoading(true));
       const res = await axios.post(
-        `https://jobfinder-j37x.onrender.com/api/v1/user/login`,
+        `${USER_API_END_POINT}/api/v1/user/login`,
         formData,
         {
           headers: {

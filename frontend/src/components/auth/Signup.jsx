@@ -12,6 +12,7 @@ import { Loader2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import Footer from "../Footer";
+import { USER_API_END_POINT } from "@/utils/constant";
 
 function Signup() {
   const [input, setInput] = useState({
@@ -46,7 +47,7 @@ function Signup() {
     try {
       dispatch(setLoading(true));
       const res = await axios.post(
-        `https://jobfinder-j37x.onrender.com/api/v1/user/register`,
+        `${USER_API_END_POINT}/api/v1/user/register`,
         formData,
         {
           headers: {

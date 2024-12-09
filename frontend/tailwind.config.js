@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import tailwindcssAnimate from 'tailwindcss-animate';
+
+export default {
   darkMode: ["class"],
   content: [
     './pages/**/*.{js,jsx}',
@@ -15,6 +16,10 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 3%, rgba(0,212,255,1) 100%)',
+      }
+
     },
     extend: {
       colors: {
@@ -73,5 +78,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [tailwindcssAnimate],
+};

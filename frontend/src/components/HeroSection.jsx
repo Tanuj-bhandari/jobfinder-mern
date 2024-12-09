@@ -20,7 +20,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className={`text-center h-5/6  ${light ? "bg-[#F9FAF5]" : "bg-[#030101]"}`}
+      className={`text-center h-5/6  ${light ? "bg-[#F9F7F5]" : "bg-[#030101]"}`}
     >
       <div className="relative flex flex-col gap-5 my-8">
         <div className="relative z-10 flex flex-col gap-5 my-10">
@@ -46,7 +46,7 @@ const HeroSection = () => {
               onChange={(e) => setQuery(e.target.value)}
             />
             <Button
-              className={`h-12 py-2 mx-1 rounded-full ${light?'bg-blue-500':'bg-white text-black'} mr-2`}
+              className={`h-12 py-2 mx-1 rounded-full ${light?'light':'bg-white text-black'} mr-2`}
               onClick={searchJobHandler}
             >
               <Search className="w-4" />
@@ -55,7 +55,7 @@ const HeroSection = () => {
         </div>
         {light ? (
           <div
-            className="absolute top-0 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
+            className="absolute top-6 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
             key="light-video"
           >
             <video
@@ -71,7 +71,7 @@ const HeroSection = () => {
         ) :(
           (
             <div
-              className="absolute top-0 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
+              className="absolute top-6 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
               key="dark"
             >
               <video

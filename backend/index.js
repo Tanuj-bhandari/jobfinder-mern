@@ -9,11 +9,11 @@ import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 import adminRoute from "./routes/admin.route.js";
 import otherRoute from "./routes/other.route.js";
-
+import path from "path"
 dotenv.config({});
 
 const app = express();
-
+const DIRNAME=path.resolve();
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -36,6 +36,11 @@ app.use("/api/v1/application", applicationRoute);
 app.use("/api/v1/admin",adminRoute); 
 app.use("/api/v1/owner",otherRoute); 
 
+
+app.use(express.static(path.join(DIRNAME,"/frontend/dist")));
+app.use("*",(_,res)=>{
+    res.sendFile(path.resolve(DIRNAME,"frontend","dist","index.html"));
+});
 
 app.listen(PORT,()=>{
     connectDB();

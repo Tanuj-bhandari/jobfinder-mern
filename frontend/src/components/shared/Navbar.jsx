@@ -47,12 +47,12 @@ function Navbar() {
 
   return (
     <>
-      <div className={`${light ? "bg-gray-200" : "bg-zinc-800"}`}>
-        <div className="flex items-center justify-between mx-auto max-w-5xl h-16">
+      <div className={`${light ? "light" : "bg-zinc-800"}`}>
+        <div className="flex items-center justify-between mx-auto max-w-7xl h-16">
           <div className="flex gap-5 h-full items-center">
             <Link
               to="/"
-              className={`${light ? "text-black" : "text-white"} text-2xl font-bold cursor-pointer`}
+              className={`${light ? "text-white" : "text-white"} text-2xl font-bold cursor-pointer`}
             >
               Job<span className="text-blue-500">Seek</span>
             </Link>
@@ -83,17 +83,17 @@ function Navbar() {
               ) : (
                 <>
                   <li>
-                    <Link className={`${light ? "hover:text-gray-500" : "text-white"}`} to="/">
+                    <Link className={`${light ? "text-white hover:text-gray-300" : "text-white"}`} to="/">
                       Home
                     </Link>
                   </li>
                   <li>
-                    <Link className={`${light ? "hover:text-gray-500" : "text-white"}`} to="/jobs">
+                    <Link className={`${light ? "text-white hover:text-gray-300" : "text-white"}`} to="/jobs">
                       Jobs
                     </Link>
                   </li>
                   <li>
-                    <Link className={`${light ? "hover:text-gray-500" : "text-white"}`} to="/browse">
+                    <Link className={`${light ? "text-white hover:text-gray-300" : "text-white"}`} to="/browse">
                       Browse
                     </Link>
                   </li>

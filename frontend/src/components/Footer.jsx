@@ -6,14 +6,14 @@ const Footer = () => {
     const { light} = useSelector(store => store.mode); 
 
     return (
-        <div className={`${light?'bg-white':'bg-zinc-800 text-white'} max-w-7xl `}>
-            <div className={`max-w-5xl mx-auto my-20 ${light?'bg-white':'bg-zinc-800 text-white'} min-h-52 lg:h-52 flex gap-2 py-2 flex-col lg:flex-row`}>
+        <div className={`${light?'light':'bg-zinc-800 text-white'} max-w-8xl `}>
+            <div className={`max-w-5xl mx-auto my-20 ${light?'bg-none':'bg-zinc-800 text-white'} min-h-52 lg:h-52 flex gap-2 py-2 flex-col lg:flex-row`}>
                 <div className='mx-auto w-80 text-xl lg:text-3xl font-semibold flex flex-col gap-5 items-center lg:items-start'>
                     <div >
-                        <span >Job</span><span className='text-blue-500'>Seek</span>
+                        <span className='text-white' >Job</span><span className='text-blue-500'>Seek</span>
                     </div>
                     <div>
-                        <h5 className='text-sm text-gray-500'>Connect with us</h5>
+                        <h5 className='text-sm text-white'>Connect with us</h5>
                         <div className='w-[240px]'>
                             <ul className="example-2">
                                 <li className="icon-content">
@@ -110,29 +110,29 @@ const Footer = () => {
                 </div>
                 <div className='w-full  lg:flex lg:flex-row  gap-2  lg:px-20 '>
                     <div className=' w-full flex flex-col gap-2 text-center'>
-                        <Link to="/aboutUs"><h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>About us</h4></Link>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Careers</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Employer home</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Sitemap</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Credits</h4>
+                        <Link to="/aboutUs"><h4 className='lg:text-xl text-white hover:text-gray-200 text-semibold cursor-pointer'>About us</h4></Link>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Careers</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Employer home</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Sitemap</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Credits</h4>
                     </div>
                     <div className=' w-full flex flex-col gap-2 text-center'>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Help center</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Summons/Notices</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Gruevances</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Report issue</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Help center</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Summons/Notices</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Gruevances</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Report issue</h4>
 
                     </div>
                     <div className=' w-full flex flex-col gap-2 text-center'>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Privacy Policy</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Terms&Condtions</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Fraud Alert</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Trust & Safety</h4>
-                        <h4 className='lg:text-xl text-gray-500 hover:text-black cursor-pointer'>Feedback</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Privacy Policy</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Terms&Condtions</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Fraud Alert</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Trust & Safety</h4>
+                        <h4 className='lg:text-xl text-white hover:text-gray-200 cursor-pointer'>Feedback</h4>
                     </div>
                 </div>
             </div>
-            <div className='bg-black text-white text-center py-1 h-10'><h1>Copy right reserved @godfather420.com</h1></div>
+            <div className='light text-white text-center py-1 h-10'><h1>Copy right reserved @godfather420.com</h1></div>
         </div>
     )
 }

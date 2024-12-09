@@ -63,7 +63,6 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             setLoading(false);
         }
         setOpen(false);
-        console.log(input);
     }
 
     return (
@@ -79,7 +78,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 <Label htmlFor="name" className="text-right">Name</Label>
                                 <Input
                                     id="name"
-                                    name="name"
+                                    name="fullname"
                                     type="text"
                                     value={input.fullname}
                                     onChange={changeEventHandler}
@@ -101,7 +100,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 <Label htmlFor="number" className="text-right">Number</Label>
                                 <Input
                                     id="number"
-                                    name="number"
+                                    name="phoneNumber"
                                     value={input.phoneNumber}
                                     onChange={changeEventHandler}
                                     className="col-span-3"

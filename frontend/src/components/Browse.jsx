@@ -5,6 +5,7 @@ import NoJobsAvailable from './NoJobsAvailable'; // Import the NoJobsAvailable c
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchedQuery } from '@/redux/jobSlice';
 import useGetAllJobs from '@/hooks/useGetAllJobs';
+import Footer from './Footer';
 
 const Browse = () => {
     useGetAllJobs();
@@ -20,7 +21,7 @@ const Browse = () => {
     return (
         <div>
             <Navbar />
-            <div className='max-w-6xl mx-auto h-[470px] my-6 border border-gray-300 rounded-md px-3'>
+            <div className='max-w-6xl mx-auto h-[470px] my-6 border border-gray-300 rounded-md px-3 overflow-y-auto'>
                 <h1 className='font-bold text-xl my-5'>Search Results ({allJobs.length})</h1>
                 
                 {allJobs.length === 0 ? (
@@ -33,6 +34,7 @@ const Browse = () => {
                     </div>
                 )}
             </div>
+            <Footer/>
         </div>
     );
 }

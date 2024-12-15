@@ -13,7 +13,7 @@ const SavedJobs = () => {
     useEffect(() => {
         const getSavedJobs = async () => {
             try {
-                const res = await axios.get(`${USER_API_END_POINTz}/getSavedJobs`, { withCredentials: true });
+                const res = await axios.get(`${USER_API_END_POINT}/getSavedJobs`, { withCredentials: true });
                 if (res.data.success) {
                     setSavedJobs(res.data.savedJobs);
                 }

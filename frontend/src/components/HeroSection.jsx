@@ -55,7 +55,7 @@ const HeroSection = () => {
         </div>
         {light ? (
           <div
-            className="absolute top-6 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
+            className="absolute top-7 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
             key="light-video"
           >
             <video
@@ -71,7 +71,7 @@ const HeroSection = () => {
         ) :(
           (
             <div
-              className="absolute top-6 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
+              className="absolute top-7 right-0 h-full w-1/3 p-4 flex items-center justify-center z-0"
               key="dark"
             >
               <video

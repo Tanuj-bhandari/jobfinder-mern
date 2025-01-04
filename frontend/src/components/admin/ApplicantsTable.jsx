@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { MoreHorizontal } from 'lucide-react';
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'sonner';
 import { APPLICATION_API_END_POINT } from '@/utils/constant';
 import axios from 'axios';
+import useGetAppliedJobs from '@/hooks/useGetAppliedJobs';
 
 const shortlistingStatus = ["Accepted", "Rejected"];
 
@@ -16,6 +17,7 @@ const ApplicantsTable = () => {
     const [selectedApplicant, setSelectedApplicant] = useState(null);
 
     const statusHandler = async (status, id, reason) => {
+        console.log(status, id, reason);
         try {
             axios.defaults.withCredentials = true;
             const res = await axios.post(`${APPLICATION_API_END_POINT}/status/${id}/update`, { status, reason });
@@ -29,8 +31,6 @@ const ApplicantsTable = () => {
         setPopupStatus(null);
         setReason('');
     };
-
-  
 
     return (
         <div>
@@ -69,7 +69,7 @@ const ApplicantsTable = () => {
                                     )}
                                 </TableCell>
                                 <TableCell>{item?.applicant.createdAt.split('T')[0]}</TableCell>
-                                <TableCell className={`${item?.status==='rejected'?'text-red-500':''}`}>{item?.status}</TableCell>
+                                <TableCell className={`${item?.status === 'rejected' ? 'text-red-500' : ''}`}>{item?.status}</TableCell>
                                 <TableCell className="float-right cursor-pointer">
                                     <Popover>
                                         <PopoverTrigger>
@@ -79,7 +79,15 @@ const ApplicantsTable = () => {
                                             {shortlistingStatus.map((status, index) => {
                                                 return (
                                                     <div
-                                                        onClick={() => handleActionClick(status, item)}
+                                                        onClick={() => {
+                                                            if (status === 'Accepted') {
+                                                                setSelectedApplicant(item); // Set selectedApplicant for 'Accepted' status
+                                                                statusHandler(status, item?._id, ""); // Handle status update directly
+                                                            } else {
+                                                                setSelectedApplicant(item); // Set selectedApplicant for 'Rejected' status
+                                                                setPopupStatus(status); // Show popup for 'Rejected' status
+                                                            }
+                                                        }}
                                                         key={index}
                                                         className="flex w-fit items-center my-2 cursor-pointer"
                                                     >
@@ -96,7 +104,7 @@ const ApplicantsTable = () => {
             </Table>
 
             {/* Popup for adding a reason */}
-            {popupStatus && (
+            {popupStatus && selectedApplicant && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="bg-white p-6 rounded-lg shadow-md w-96">
                         <h3 className="text-lg font-semibold mb-4">
@@ -116,7 +124,7 @@ const ApplicantsTable = () => {
                                 Cancel
                             </button>
                             <button
-                                onClick={() => statusHandler(popupStatus, selectedApplicant?._id, reason)}
+                                onClick={() => statusHandler(popupStatus, selectedApplicant?._id, reason)} // Pass selectedApplicant here
                                 className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                             >
                                 Send
@@ -130,3 +138,6 @@ const ApplicantsTable = () => {
 };
 
 export default ApplicantsTable;
+
+
+

@@ -50,12 +50,12 @@ const AppliedJobTable = () => {
                                 </Badge>
                             </TableCell>
                             <TableCell className="text-right">
-                                <span
+                                {appliedJob.status==='pending' || appliedJob.status==='accepted' ?'':<span
                                     className="cursor-pointer bg-blue-500 hover:bg-blue-600 w-15 h-8 py-1 px-1 text-white font-semibold rounded-sm"
                                     onClick={() => handleCheckReason(appliedJob?.reason || 'No reason provided')}
                                 >
                                     Check Reason
-                                </span>
+                                </span>}
                             </TableCell>
                         </TableRow>
                     ))}

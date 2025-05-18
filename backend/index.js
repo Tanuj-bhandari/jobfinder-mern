@@ -20,11 +20,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ✅ FIXED CORS
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: [
+    "http://localhost:5173",
+    "https://jobfinder-mern.onrender.com" // 👈 yeh frontend ka live URL hai
+  ],
   credentials: true,
 };
+
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 3000;

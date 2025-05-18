@@ -38,10 +38,11 @@ app.use("/api/v1/admin", adminRoute);
 app.use("/api/v1/owner", otherRoute); 
 
 // Static assets
-app.use(express.static(path.join(DIRNAME, "/frontend/dist")));
+app.use(express.static(path.join(DIRNAME, "../frontend/dist")));
 app.use("*", (_, res) => {
-  res.sendFile(path.resolve(DIRNAME, "frontend", "dist", "index.html"));
+  res.sendFile(path.resolve(DIRNAME, "../frontend", "dist", "index.html"));
 });
+
 
 app.listen(PORT, () => {
   connectDB();

@@ -26,10 +26,25 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Add this in place of your existing cors middleware
+
+
+// 👇 Add this CORS config
+const allowedOrigins = [
+  "https://jobfinder-mern.onrender.com",  // ✅ Your frontend URL
+  "http://localhost:5173"                // ✅ For local testing
+];
+
 app.use(cors({
-  origin: "https://jobfinder-mern.onrender.com",  // ✅ Bas ye frontend ka origin hai
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 
 
 // API Routes

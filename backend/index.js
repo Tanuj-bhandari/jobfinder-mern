@@ -24,10 +24,14 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+import cors from "cors";
+
+// Add this in place of your existing cors middleware
 app.use(cors({
-  origin: true,
+  origin: "https://jobfinder-mern.onrender.com",  // ✅ Bas ye frontend ka origin hai
   credentials: true
 }));
+
 
 // API Routes
 app.use("/api/v1/user", userRoute);

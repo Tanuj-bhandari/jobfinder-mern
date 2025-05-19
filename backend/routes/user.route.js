@@ -1,3 +1,4 @@
+
 import express from "express";
 import { getSavedJobs, login, logout, register, saveJob, updateLocation, updateProfile } from "../controllers/user.controller.js";
 import isAuthenticated from "../middlewares/isAuthenticated.js";

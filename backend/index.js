@@ -15,20 +15,34 @@ dotenv.config({});
 const app = express();
 const DIRNAME = path.resolve();
 
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://jobfinder-mern.onrender.com"
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "https://jobfinder-mern.onrender.com" // 👈 yeh frontend ka live URL hai
-  ],
-  credentials: true,
-};
-
 app.use(cors(corsOptions));
+
+
+
 
 const PORT = process.env.PORT || 3000;
 

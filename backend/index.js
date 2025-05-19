@@ -24,7 +24,6 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-import cors from "cors";
 
 // Add this in place of your existing cors middleware
 app.use(cors({

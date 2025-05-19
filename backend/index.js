@@ -4,6 +4,13 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import path from "path";
+import { fileURLToPath } from "url"; // ✅ Add this
+
+// Correct __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename); // ✅ Correct way
+
+// Routes
 import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
@@ -13,7 +20,6 @@ import otherRoute from "./routes/other.route.js";
 
 dotenv.config();
 const app = express();
-const __dirname = path.resolve();
 
 // Middleware
 app.use(express.json());
@@ -43,4 +49,3 @@ app.listen(PORT, () => {
   connectDB();
   console.log(`✅ Server running on port ${PORT}`);
 });
-
